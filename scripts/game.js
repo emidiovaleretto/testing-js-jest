@@ -26,6 +26,20 @@ function newGame() {
   addTurn();
 }
 
+function playerTurn() {
+  let i = game.playerMoves.length - 1;
+  if (game.currentGame[i] === game.playerMoves[i]) {
+    if (game.playerMoves.length === game.currentGame.length) {
+      game.score++;
+      showScore();
+      addTurn();
+    }
+  } else {
+    alert("Wrong move!");
+    newGame();
+  }
+}
+
 function showScore() {
   document.getElementById("score").innerText = game.score;
 }
@@ -56,4 +70,12 @@ function lightsOn(circ) {
   }, 400);
 }
 
-module.exports = { game, newGame, showScore, addTurn, lightsOn, showTurns };
+module.exports = {
+  game,
+  newGame,
+  showScore,
+  addTurn,
+  lightsOn,
+  showTurns,
+  playerTurn,
+};
